@@ -1,0 +1,3 @@
+numbers = [0,1,2,5,6,7,9,8]
+for i in numbers:
+  print(i)

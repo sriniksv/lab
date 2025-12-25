@@ -1,0 +1,26 @@
+---
+- name: Enforce AWS EC2 Policies
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+
+  vars:
+    region: ap-south-1
+    vpc_id: vpc-0cd957392a1f46a24
+    security_group_name: sg
+
+  tasks:
+  - name: Enforce EC2 security group policy
+    amazon.aws.ec2_security_group:
+      name: "{{ security_group_name }}"
+      description: "Policy enforced SG"
+      vpc_id: "{{ vpc_id }}"
+      region: "{{ region }}"
+      rules:
+        - proto: tcp
+          ports: 22
+          cidr_ip: 0.0.0.0/0
+      rules_egress:
+        - proto: -1
+          cidr_ip: 0.0.0.0/0
+      state: present

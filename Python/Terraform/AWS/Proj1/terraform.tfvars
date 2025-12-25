@@ -1,0 +1,8 @@
+ami_value = "ami-02b8269d5e85954ef"
+cidr_value = "10.0.0.0/16"
+region_value = "ap-south-1"
+first_zone = "ap-south-1a"
+second_zone = "ap-south-1b"
+instance_value = "t3.micro"
+subnet1_value = "10.0.1.0/24"
+subnet2_value = "10.0.2.0/24"
