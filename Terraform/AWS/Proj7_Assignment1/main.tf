@@ -15,7 +15,7 @@ resource "aws_security_group" "sg" {
         from_port = 22
         to_port = 22
         protocol = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
+        cidr_blocks = var.allowed_ssh_cidr
     }
 
     ingress {
@@ -52,7 +52,10 @@ resource "aws_route_table_association" "public_subnet" {
 
 resource "aws_instance" "myinstance" {
     ami = var.ami_id
-    instance_type = var.ec2_type
+    instance_type = var.instance_type
     key_name = "mykey_pair"
     subnet_id = aws_security_group.sg.id
+    tags = {
+        Name = "${var.instance_name}-${var.environment}"
+    }
 }
