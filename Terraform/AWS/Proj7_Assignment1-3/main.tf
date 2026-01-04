@@ -1,3 +1,4 @@
+}
 resource "aws_vpc" "myvpc" {
     cidr_block = "10.0.0.0/16"
 }
@@ -5,6 +6,7 @@ resource "aws_vpc" "myvpc" {
 resource "aws_subnet" "public" {
     vpc_id = aws_vpc.myvpc.id
     cidr_block = "10.0.0.0/24"
+    map_public_ip_on_launch = true
 }
 
 resource "aws_security_group" "sg" {
@@ -53,8 +55,9 @@ resource "aws_route_table_association" "public_subnet" {
 resource "aws_instance" "myinstance" {
     ami = var.ami_id
     instance_type = var.instance_type
-    key_name = "mykey_pair"
-    subnet_id = aws_security_group.sg.id
+    subnet_id = aws_subnet.public.id
+    vpc_security_group_ids = [aws_security_group.sg.id]
+    key_name = data.aws_key_pair.existing.key_name
     tags = {
         Name = "${var.instance_name}-${var.environment}"
     }

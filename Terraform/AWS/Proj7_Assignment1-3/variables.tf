@@ -1,13 +1,14 @@
 variable "region" {
-    description = "region where the infra going to build"
+    description = "specify the region"
 }
+
 variable "instance_name" {
     description = "name of the Instance"
 }
 
 variable "ami_id" {
     description = "Declare the AMI ID"
-    default = "ami-0ecb62995f68bb549"
+    default = "ami-02b8269d5e85954ef"
 }
 variable "instance_type" {
     description = "Instance Type"
@@ -18,4 +19,9 @@ variable "environment" {
 }
 variable "allowed_ssh_cidr" {
     description = "laptop IP"
+}
+variable "key_name" {
+    description = "read the existing key pair"
+    type = string
+    default = "sriniksv_keypair"
 }
