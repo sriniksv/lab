@@ -23,5 +23,5 @@ variable "allowed_ssh_cidr" {
 variable "key_name" {
     description = "read the existing key pair"
     type = string
-    default = "sriniksv_keypair"
+    default = "sriniksv_keypair1"
 }
