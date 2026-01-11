@@ -53,6 +53,7 @@ resource "aws_route_table_association" "public_subnet" {
 
 resource "aws_instance" "myinstance" {
     ami = var.ami_id
+    count = 2
     instance_type = var.instance_type
     subnet_id = aws_subnet.public.id
     vpc_security_group_ids = [aws_security_group.sg.id]
