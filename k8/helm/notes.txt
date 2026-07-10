@@ -1,0 +1,19 @@
+helm repo add my-bitnami <chart-url>
+helm install test-ngix my-bintnabi/nginx
+helm list
+helm uninstall <chart-name>
+helm repo list
+helm repo remove <chartname>
+
+helm create myapp
+helm test myapp
+helm lin ./myapp - #syntex verification
+helm template myapp ./myapp
+
+Command to be defined/verified
+helm histroy
+helm repo search
+helm rollback
+
+hpa - Horizontal Pod Autoscaler
+98
